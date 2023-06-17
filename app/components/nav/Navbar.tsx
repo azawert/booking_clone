@@ -5,6 +5,7 @@ import { Container } from "../Container";
 import { Logo } from "./Logo";
 import { Search } from "./Search";
 import { UserMenu } from "./UserMenu";
+import { Categories } from "./Categories";
 
 interface INavProps {
   currentUser?: TSafeUser | null;
@@ -22,6 +23,7 @@ export const Navbar: React.FC<INavProps> = ({ currentUser }) => {
           </div>
         </Container>
       </div>
+      <Categories />
     </div>
   );
 };

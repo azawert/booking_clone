@@ -83,7 +83,7 @@ export const RegisterModal = () => {
         isOutline
         label='Continue with Google'
         icon={FcGoogle}
-        onClick={() => {}}
+        onClick={() => signIn("google")}
       />
       <Button
         isOutline
