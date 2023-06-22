@@ -1,7 +1,7 @@
 "use client";
 
 import { useCountries } from "@/app/hooks/useCountries";
-import { TSafeUser } from "@/app/types";
+import { TSafeListing, TSafeUser } from "@/app/types";
 import { Listing, Reservation } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo } from "react";
@@ -9,10 +9,9 @@ import { format } from "date-fns";
 import Image from "next/image";
 import { HeartButton } from "../HeartButton";
 import { Button } from "../Button";
-import { useFavorite } from "@/app/hooks/useFavorite";
 
 interface IListingCard {
-  data: Listing;
+  data: TSafeListing;
   currentUser?: TSafeUser | null;
   reservation?: Reservation;
   onAction?: (id: string) => void;
@@ -61,7 +60,7 @@ export const ListingCard: React.FC<IListingCard> = ({
   }, [reservation]);
   const handleCardClick = () => router.push(`/listings/${data.id}`);
   return (
-    <div className='col-span-1 cursor-pointer group'>
+    <div className='col-span-1 cursor-pointer group' onClick={handleCardClick}>
       <div className='flex flex-col gap-2 w-full'>
         <div className='aspect-square w-full relative overflow-hidden rounded-xl'>
           <Image
@@ -74,7 +73,7 @@ export const ListingCard: React.FC<IListingCard> = ({
             <HeartButton listingId={data.id} currentUser={currentUser} />
           </div>
         </div>
-        <div onClick={handleCardClick} className='font-semibold text-lg'>
+        <div className='font-semibold text-lg'>
           {location?.region}, {location?.label}
         </div>
         <div className='font-light text-neutral-500'>

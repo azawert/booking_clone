@@ -7,7 +7,11 @@ export const getListings = async () => {
         createdAt: "desc",
       },
     });
-    return listings;
+    const safeListings = listings.map((listing) => ({
+      ...listing,
+      createdAt: listing.createdAt.toISOString(),
+    }));
+    return safeListings;
   } catch (e: any) {
     throw new Error(e);
   }

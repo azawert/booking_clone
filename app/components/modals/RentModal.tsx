@@ -188,7 +188,7 @@ export const RentModal: React.FC = () => {
         />
         <ImageUpload
           value={imageSrc}
-          onChange={(val) => setCastValue("imageSrc", val)}
+          onChange={(value) => setCastValue("imageSrc", value)}
         />
       </div>
     );

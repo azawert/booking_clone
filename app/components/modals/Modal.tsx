@@ -88,7 +88,7 @@ export const Modal: React.FC<IModalProps> = ({
             {/* footer */}
             <div className='flex flex-col gap-2 p-6'>
               <div className='flex flex-row w-full gap-4 items-center'>
-                {secondaryActionLabel && secondaryActionLabel && (
+                {secondaryActionLabel && secondaryAction && (
                   <Button
                     isDisabled={disabled}
                     label={secondaryActionLabel}

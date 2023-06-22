@@ -14,9 +14,11 @@ import { toast } from "react-hot-toast";
 import { Button } from "../Button";
 import { useLoginModal } from "@/app/hooks/useLoginModal";
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export const RegisterModal = () => {
-  const { isOpen, onClose, onOpen } = useRegisterModal();
+  const { isOpen, onClose } = useRegisterModal();
+
   const { onOpen: openLoginModal } = useLoginModal();
   const [isLoading, setIsLoading] = useState(false);
   const {
@@ -38,8 +40,9 @@ export const RegisterModal = () => {
       .post("/api/register", data)
       .then(() => {
         onClose();
+        openLoginModal();
       })
-      .catch((error) => toast.error(error.message, { duration: 600 }))
+      .catch((error) => toast.error(error.message))
       .finally(() => setIsLoading(false));
   };
   const handleOpenLoginModal = useCallback(() => {
