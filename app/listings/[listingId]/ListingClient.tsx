@@ -70,6 +70,7 @@ export const ListingClient: React.FC<IListingProps> = ({
       })
       .then(() => {
         toast.success("Success");
+        router.push("/trips");
         router.refresh();
         setDateRange(null);
       })

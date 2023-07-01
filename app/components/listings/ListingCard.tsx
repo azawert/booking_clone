@@ -1,7 +1,7 @@
 "use client";
 
 import { useCountries } from "@/app/hooks/useCountries";
-import { TSafeListing, TSafeUser } from "@/app/types";
+import { TSafeListing, TSafeReservation, TSafeUser } from "@/app/types";
 import { Listing, Reservation } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo } from "react";
@@ -13,7 +13,7 @@ import { Button } from "../Button";
 interface IListingCard {
   data: TSafeListing;
   currentUser?: TSafeUser | null;
-  reservation?: Reservation;
+  reservation?: TSafeReservation;
   onAction?: (id: string) => void;
   disabled?: boolean;
   actionLabel?: string;
