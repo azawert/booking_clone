@@ -7,10 +7,11 @@ import { ListingCard } from "./components/listings/ListingCard";
 interface HomeParams {
   searchParams: IListingParams;
 }
-
+export const dynamic = "force-dynamic";
 const Home = async ({ searchParams }: HomeParams) => {
   const currentUser = await getCurrentUser();
   const listings = await getListings(searchParams);
+
   if (listings.length === 0) {
     return <EmptyState showReset />;
   }
