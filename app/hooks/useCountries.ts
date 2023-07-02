@@ -10,7 +10,7 @@ const formattedCountries = countries.map((c) => ({
 
 export const useCountries = () => {
   const getAll = () => formattedCountries;
-  const getByValue = (value?: string) =>
+  const getByValue = (value: string) =>
     formattedCountries.find((i) => i.value === value);
   return {
     getAll,
